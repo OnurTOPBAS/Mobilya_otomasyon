@@ -131,6 +131,25 @@ Yönergenin öngördüğü tüm zorunlu nesneleri birden fazla örnekle karşıl
 - **Check:** `Fiyat > 0`, `StokAdedi >= 0`, `Miktar > 0`, `BirimFiyat > 0`, sipariş durumu sınırlı küme
 - **Default:** Tarih alanları için `CURRENT_TIMESTAMP`, stok için 0, durum için "Hazırlanıyor"
 
+#### Kısıtlayıcı Detayları ve Gerekçeleri
+
+| Kısıtlayıcı | Nerede Kullanıldı | Neden Gerekli |
+|---|---|---|
+| `PRIMARY KEY` | Tüm tablolarda `SERIAL` ile | Her satırı benzersiz tanımlar; Foreign Key ilişkileri için zorunludur |
+| `FOREIGN KEY` | `SIPARISLER.MusteriID → MUSTERILER` | Sistemde kayıtlı olmayan bir müşteriye sipariş açılmasını engeller |
+| `FOREIGN KEY` | `SIPARISDETAY.SiparisID → SIPARISLER` | Var olmayan bir siparişe detay eklenmesini engeller |
+| `FOREIGN KEY` | `SIPARISDETAY.UrunID → URUNLER` | Sistemde olmayan bir ürünün siparişe eklenmesini engeller |
+| `UNIQUE` | `MUSTERILER.Email` | Aynı e-posta adresiyle iki farklı müşteri kaydı oluşmasını önler |
+| `UNIQUE` | `KATEGORILER.KategoriAdi` | Aynı kategorinin iki kez girilmesini önler |
+| `CHECK Fiyat > 0` | `URUNLER` | Sıfır veya negatif fiyatlı ürün kaydedilmesini önler |
+| `CHECK StokAdedi >= 0` | `URUNLER` | Stok miktarının negatife düşmesini engeller |
+| `CHECK Miktar > 0` | `SIPARISDETAY` | Sıfır adet sipariş verilmesini önler |
+| `CHECK BirimFiyat > 0` | `SIPARISDETAY` | Geçersiz birim fiyat kaydını önler |
+| `CHECK Durum IN (...)` | `SIPARISLER` | Sipariş durumunun yalnızca tanımlı değerler almasını sağlar |
+| `DEFAULT CURRENT_TIMESTAMP` | Tarih alanları | Tarih bilgisinin elle girilmek zorunda kalınmadan otomatik atanmasını sağlar |
+| `DEFAULT 'Hazırlanıyor'` | `SIPARISLER.Durum` | Yeni açılan her sipariş otomatik olarak bu durumda başlar |
+| `DEFAULT 0` | `URUNLER.StokAdedi` | Yeni eklenen ürün stok alanı boş kalmadan sıfırdan başlar |
+
 ### View'lar
 - `vw_urun_katalog` — Ürün ve kategori bilgilerinin birleşik görünümü
 - `vw_siparis_ozet` — Sipariş, müşteri ve toplam tutar özeti
