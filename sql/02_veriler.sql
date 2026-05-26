@@ -1,10 +1,11 @@
 -- ================================================
 -- GUN 4: TEST VERİLERİ
--- KATEGORILER, MUSTERILER, URUNLER: Onur Topbas
--- SIPARISLER, SIPARISDETAY: Ali Hamza Tekinbas
+-- KATEGORILER, MUSTERILER, URUNLER: Onur TOPBAŞ
+-- SIPARISLER, SIPARISDETAY: Ali Hamza TEKİNBAŞ
 -- ================================================
 
 TRUNCATE TABLE SIPARISDETAY, SIPARISLER, URUNLER, MUSTERILER, KATEGORILER RESTART IDENTITY CASCADE;
+
 INSERT INTO KATEGORILER (KategoriAdi, Aciklama) VALUES
 ('Oturma Grubu', 'Koltuk, Kanepe'),
 ('Çalışma Odası', 'Çalışma Masası,Sandalye,Kitaplık'),
@@ -16,7 +17,6 @@ INSERT INTO KATEGORILER (KategoriAdi, Aciklama) VALUES
 ('Bahçe Mobilyası', 'Bahçe Masası,Sandalye,Tente'),
 ('Sehpalar', 'Zigon Sehpa,Orta Sehpa,Yan Sehpa,Dresuar Sehpa'),
 ('Yatak Odası', 'Yatak, Dolap, Komodin');
-
 
 INSERT INTO MUSTERILER (AdSoyad, Email, Telefon) VALUES
 ('Onur TOPBAŞ', 'onurtopbas@gmail.com', '05321112233'),
@@ -41,7 +41,6 @@ INSERT INTO URUNLER (KategoriID, UrunAdi, Aciklama, Marka, Renk, RenkKodu, Fiyat
 (8, 'Bahçe Takımı', 'Suya dayanıklı 1 masa ve 4 sandalye', 'Mudo', 'Kahverengi', '#964B00', 14500.00, 4),
 (9, '3lü Zigon Sehpa Takımı', 'Metal ayaklı pratik kullanım', 'Vivense', 'Ceviz', '#5C4033', 850.00, 30),
 (10, 'Çift Kişilik Baza', 'Modern görünümlü', 'IKEA', 'Meşe', '#C2B280', 4500.00, 15);
-
 
 INSERT INTO SIPARISLER (MusteriID, AliciAdSoyad, AliciTelefon, TeslimatAdresi, Durum) VALUES
 (1,  'Onur TOPBAS',        '05321112233', 'Izmit Merkez, Kocaeli',  'Teslim Edildi'),
@@ -68,15 +67,3 @@ INSERT INTO SIPARISDETAY (SiparisID, UrunID, Miktar, BirimFiyat) VALUES
 (8,  10, 1, 4500.00),
 (9,  2,  1, 2100.00),
 (10, 1,  1, 12500.50);
-
-SELECT COUNT(*) FROM KATEGORILER;
-SELECT COUNT(*) FROM MUSTERILER;
-SELECT COUNT(*) FROM URUNLER;
-SELECT COUNT(*) FROM SIPARISLER;
-SELECT COUNT(*) FROM SIPARISDETAY;
-
-SELECT * FROM KATEGORILER;
-SELECT * FROM MUSTERILER;
-SELECT * FROM URUNLER;
-SELECT * FROM SIPARISLER;
-SELECT * FROM SIPARISDETAY;
