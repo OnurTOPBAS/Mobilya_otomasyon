@@ -7,6 +7,7 @@
 -- gercek hayat senaryolari yansitildi.
 -- SIPARISDETAY'a ise her siparise en az 1 urun
 -- eklenerek FK baglantisi test edildi.
+-- Not: ToplamTutar trigger kurulunca otomatik dolacak.
 -- ================================================
 
 -- SIPARISLER: 10 adet siparis kaydi
@@ -23,17 +24,18 @@ INSERT INTO SIPARISLER (MusteriID, AliciAdSoyad, AliciTelefon, TeslimatAdresi, D
 (10, 'Ozkan BAKI',         '05440001122', 'Melikgazi, Kayseri',     'Kargoda');
 
 -- SIPARISDETAY: Her sipariste en az 1 urun
+-- UrunID 1-10 arasi (URUNLER tablosu sifirdan kurulunca 1'den baslar)
 -- BirimFiyat: urunun siparis anindaki fiyati baz alindi
 INSERT INTO SIPARISDETAY (SiparisID, UrunID, Miktar, BirimFiyat) VALUES
-(1,  17, 1, 6500.00),    -- Gardirop
-(1,  19, 2,  850.00),    -- Zigon Sehpa x2 (ayni siparise 2 urun)
-(2,  11, 1, 12500.50),   -- Deri Kanepe
-(3,  12, 1, 2100.00),    -- Calisma Masasi
-(3,  14, 1, 4100.75),    -- TV Unitesi (ayni siparise 2 urun)
-(4,  15, 2, 5500.00),    -- Ranza x2
-(5,  13, 1, 3400.00),    -- Yemek Masasi
-(6,  16, 1, 3200.00),    -- Banyo Dolabi
-(7,  18, 1, 14500.00),   -- Bahce Takimi
-(8,  20, 1, 4500.00),    -- Baza
-(9,  12, 1, 2100.00),    -- Calisma Masasi
-(10, 11, 1, 12500.50);   -- Deri Kanepe
+(1,  7, 1, 6500.00),    -- Gardirop
+(1,  9, 2,  850.00),    -- Zigon Sehpa x2
+(2,  1, 1, 12500.50),   -- Deri Kanepe
+(3,  2, 1, 2100.00),    -- Calisma Masasi
+(3,  4, 1, 4100.75),    -- TV Unitesi
+(4,  5, 2, 5500.00),    -- Ranza x2
+(5,  3, 1, 3400.00),    -- Yemek Masasi
+(6,  6, 1, 3200.00),    -- Banyo Dolabi
+(7,  8, 1, 14500.00),   -- Bahce Takimi
+(8, 10, 1, 4500.00),    -- Baza
+(9,  2, 1, 2100.00),    -- Calisma Masasi
+(10, 1, 1, 12500.50);   -- Deri Kanepe
